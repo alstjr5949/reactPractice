@@ -1,35 +1,51 @@
 import { useState, useEffect } from "react";
+import "./App.css";
 
 function App() {
-  const [toDo, setToDo] = useState("");
-  const [toDos, setToDos] = useState([]);
-  const onChange = (event) => setToDo(event.target.value);
-  const onSubmit = (event) => {
-    event.preventDefault();
-    if (toDo === "") {
-      return;
-    }
-    setToDos((currentArray) => [toDo, ...currentArray]);
-    setToDo("");
+  const [loading, setLoading] = useState(true);
+  const [coins, setCoins] = useState([]);
+  const [seed, setSeed] = useState(0);
+  const onChange = (event) => {
+    setSeed(event.target.value);
   };
+  useEffect(() => {
+    fetch(
+      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=krw&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        setCoins(json);
+        setLoading(false);
+      });
+  }, []);
   return (
-    <div>
-      <h1>My To Dos ({toDos.length})</h1>
-      <form onSubmit={onSubmit}>
-        <input
-          onChange={onChange}
-          value={toDo}
-          type="text"
-          placeholder="Write your to do..."
-        />
-        <button>Add To Do</button>
-      </form>
-      <hr />
-      <ul>
-        {toDos.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
+    <div className="coinWrapper">
+      <h1>The Coins! ({coins.length})</h1>
+      <label htmlFor="seedMoney">Your Seed Money(Won)</label>
+      <input
+        onChange={onChange}
+        value={seed}
+        id="seedMoney"
+        type="number"
+        placeholder="Your seed money(원)"
+      />
+      {loading ? (
+        <strong>Loading...</strong>
+      ) : (
+        <div>
+          {coins.map((coin) => (
+            <div className="coinDiv">
+              <img src={coin.image} />
+              <span>
+                {coin.name} ({coin.symbol}) : {coin.current_price} 원
+              </span>
+              <span>
+                구매가능 개수 : {(seed / coin.current_price).toFixed(4)} 개
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
