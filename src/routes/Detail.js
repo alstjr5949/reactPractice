@@ -26,7 +26,7 @@ function Detail() {
           </div>
           <div>
             <div>
-              <img src={movie.medium_cover_image} />
+              <img src={movie.medium_cover_image} alt={movie.title} />
             </div>
             <div>
               <div>

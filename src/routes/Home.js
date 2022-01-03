@@ -26,7 +26,7 @@ function Home() {
             <Movie
               key={movie.id}
               id={movie.id}
-              mediumCoverImage={movie.medium_cover_image}
+              largeCoverImage={movie.large_cover_image}
               title={movie.title}
               summary={movie.summary}
               genres={movie.genres}
