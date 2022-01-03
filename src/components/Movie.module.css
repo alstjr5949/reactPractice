@@ -2,6 +2,12 @@
 
 .movieWrapper {
   display: flex;
+  color: white;
+}
+
+.movieWrapper a {
+  text-decoration: none;
+  color: white;
 }
 
 .imgs {
@@ -9,15 +15,34 @@
   height: 500px;
   border-radius: 10px;
   position: relative;
+  cursor: pointer;
 }
 
 .texts {
-  margin-left: 30px;
+  position: absolute;
   width: 300px;
-  height: 500px;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.7);
   padding: 20px;
+  overflow-y: scroll;
+  transition: all 0.5s ease-in;
+}
+
+.none {
+  display: none;
+}
+
+.block {
+  display: block;
+  height: 500px;
+  position: absolute;
+  width: 300px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  overflow-y: scroll;
+  transition: all 0.5s ease-in;
+  z-index: 1;
 }
 
 .titleBox {
@@ -25,12 +50,34 @@
   padding: 5px;
 }
 
-.texts h2 {
+.titleBox h2 {
   font-size: 25px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
-.texts a {
-  text-decoration: none;
-  color: white;
+.summaryBox {
+  margin: 30px 0px;
+  padding: 5px;
+}
+
+.summaryBox h3,
+.genreBox h3 {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.summaryBox p {
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.genreBox {
+  padding: 5px;
+}
+
+.genreBox ul {
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 25px;
 }
