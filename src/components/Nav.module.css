@@ -22,11 +22,28 @@
   height: 100%;
   display: flex;
   align-items: center;
-  font-size: 30px;
-  color: #e5e5e5;
+  font-size: 25px;
+  color: #d1d1d1;
 }
 
 .navHome a {
   text-decoration: none;
-  color: #e5e5e5;
+  color: #d1d1d1;
+}
+
+.drop {
+  width: 60px;
+  height: 60px;
+  box-shadow: inset 10px 10px 10px rgba(255, 255, 255, 0.05),
+    2px 2px 3px rgba(255, 255, 255, 0.05), 2px 2px 5px rgba(255, 255, 255, 0.05),
+    inset -10px -10px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.drop:hover {
+  color: #d6c992;
+  transition: all 2s ease-out;
 }

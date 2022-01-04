@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import Movie from "../components/Movie";
 import styles from "./Home.module.css";
+import {
+  faChevronRight,
+  faChevronLeft,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -38,6 +43,14 @@ function Home() {
                   genres={movie.genres}
                 />
               ))}
+            </div>
+          </div>
+          <div className={styles.btnContainer}>
+            <div className={styles.prevBtn}>
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </div>
+            <div className={styles.nextBtn}>
+              <FontAwesomeIcon icon={faChevronRight} />
             </div>
           </div>
         </div>
