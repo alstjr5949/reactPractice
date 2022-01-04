@@ -4,27 +4,10 @@ import { Link } from "react-router-dom";
 import styles from "./Movie.module.css";
 
 function Movie({ id, largeCoverImage, title, summary, genres }) {
-  const [hover, setHover] = useState(false);
-  const mouseEnter = () => {
-    setHover(true);
-  };
-  const mouseLeave = () => {
-    setHover(false);
-  };
   return (
     <div className={styles.movieWrapper}>
-      <img
-        onMouseEnter={mouseEnter}
-        onMouseLeave={mouseLeave}
-        className={styles.imgs}
-        src={largeCoverImage}
-        alt={title}
-      />
-      <div
-        onMouseEnter={mouseEnter}
-        onMouseLeave={mouseLeave}
-        className={hover ? styles.block : styles.none}
-      >
+      <img className={styles.imgs} src={largeCoverImage} alt={title} />
+      <div className={styles.texts}>
         <div className={styles.titleBox}>
           <h2>
             <Link to={`movie/${id}`}>{title}</Link>
