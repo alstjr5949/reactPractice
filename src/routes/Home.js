@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Movie from "../components/Movie";
+import styles from "./Home.module.css";
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -7,7 +8,7 @@ function Home() {
   const getMovies = async () => {
     const json = await (
       await fetch(
-        "https://yts.mx/api/v2/list_movies.json?minimum_rating=7&sort_by=year&limit=15"
+        "https://yts.mx/api/v2/list_movies.json?minimum_rating=7&sort_by=year&limit=10"
       )
     ).json();
     setMovies(json.data.movies);
@@ -21,17 +22,24 @@ function Home() {
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        <div>
-          {movies.map((movie) => (
-            <Movie
-              key={movie.id}
-              id={movie.id}
-              largeCoverImage={movie.large_cover_image}
-              title={movie.title}
-              summary={movie.summary}
-              genres={movie.genres}
-            />
-          ))}
+        <div className={styles.container}>
+          <div className={styles.smallTitle}>
+            <h1>Today's TOP 10 Movies</h1>
+          </div>
+          <div className={styles.slideWrapper}>
+            <div className={styles.slideContainer}>
+              {movies.map((movie) => (
+                <Movie
+                  key={movie.id}
+                  id={movie.id}
+                  largeCoverImage={movie.large_cover_image}
+                  title={movie.title}
+                  summary={movie.summary}
+                  genres={movie.genres}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       )}
     </div>

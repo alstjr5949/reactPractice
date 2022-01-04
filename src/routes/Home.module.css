@@ -1,0 +1,30 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.slideWrapper {
+  display: flex;
+  align-items: center;
+  width: 1000px;
+  overflow: hidden;
+}
+
+.slideContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3500px;
+}
+
+.smallTitle {
+  width: 1000px;
+  font-size: 30px;
+  font-weight: 700;
+  color: #e5e5e5;
+  margin-bottom: 30px;
+}
