@@ -27,8 +27,6 @@ function Home() {
       setTranslateX(-(index - 1) * 350);
     }
   };
-  console.log(index);
-  console.log(translateX);
   const getMovies = async () => {
     const json = await (
       await fetch(

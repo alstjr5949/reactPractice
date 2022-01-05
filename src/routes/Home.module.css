@@ -13,6 +13,7 @@
   width: 1000px;
   overflow: hidden;
   position: relative;
+  z-index: 1;
 }
 
 .slideContainer {
@@ -25,10 +26,14 @@
 
 .smallTitle {
   width: 1150px;
+  margin-bottom: 40px;
+}
+
+.smallTitle h1 {
   font-size: 35px;
   font-weight: 700;
   color: #e5e5e5;
-  margin-bottom: 40px;
+  text-shadow: 1px 0px 3px rgba(150, 150, 150, 1);
 }
 
 .btnContainer {
