@@ -10,6 +10,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Home() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
+  const [index, setIndex] = useState(0);
+  const [translateX, setTranslateX] = useState(0);
+  const nextClick = () => {
+    if (index < 7) {
+      setIndex((current) => current + 1);
+      setTranslateX(-(index + 1) * 350);
+    } else {
+      setIndex(0);
+      setTranslateX(0);
+    }
+  };
+  const prevClick = () => {
+    if (index > 0) {
+      setIndex(index - 1);
+      setTranslateX(-(index - 1) * 350);
+    }
+  };
+  console.log(index);
+  console.log(translateX);
   const getMovies = async () => {
     const json = await (
       await fetch(
@@ -32,7 +51,10 @@ function Home() {
             <h1>Today's TOP 10 Movies</h1>
           </div>
           <div className={styles.slideWrapper}>
-            <div className={styles.slideContainer}>
+            <div
+              className={styles.slideContainer}
+              style={{ transform: `translateX(${translateX}px)` }}
+            >
               {movies.map((movie) => (
                 <Movie
                   key={movie.id}
@@ -46,10 +68,10 @@ function Home() {
             </div>
           </div>
           <div className={styles.btnContainer}>
-            <div className={styles.prevBtn}>
+            <div onClick={prevClick} className={styles.prevBtn}>
               <FontAwesomeIcon icon={faChevronLeft} />
             </div>
-            <div className={styles.nextBtn}>
+            <div onClick={nextClick} className={styles.nextBtn}>
               <FontAwesomeIcon icon={faChevronRight} />
             </div>
           </div>
