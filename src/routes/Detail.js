@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
+import styles from "./Detail.module.css";
 
 function Detail() {
   const { id } = useParams();
@@ -21,21 +22,8 @@ function Detail() {
         <h1>Loading ...</h1>
       ) : (
         <div>
-          <div>
-            <h1>Movie Details</h1>
-          </div>
-          <div>
-            <div>
-              <img src={movie.medium_cover_image} alt={movie.title} />
-            </div>
-            <div>
-              <div>
-                <h1>{movie.title}</h1>
-                <h6>{movie.year}</h6>
-                <h6>{movie.rating}</h6>
-                <p>{movie.description_intro}</p>
-              </div>
-            </div>
+          <div className={styles.topImage}>
+            <img src={movie.background_image} alt={movie.title} />
           </div>
         </div>
       )}
